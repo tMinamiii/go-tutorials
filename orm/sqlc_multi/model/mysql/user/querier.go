@@ -2,7 +2,7 @@
 // versions:
 //   sqlc v1.16.0
 
-package sqlc_multi_content
+package model_user
 
 import (
 	"context"
@@ -10,10 +10,10 @@ import (
 )
 
 type Querier interface {
-	DeleteUser(ctx context.Context, db DBTX, id int64) error
-	InsertUser(ctx context.Context, db DBTX, arg InsertUserParams) (sql.Result, error)
+	Delete(ctx context.Context, db DBTX, id int64) error
+	Insert(ctx context.Context, db DBTX, arg InsertParams) (sql.Result, error)
 	SelectByID(ctx context.Context, db DBTX, id int64) (User, error)
-	UpdateUser(ctx context.Context, db DBTX, arg UpdateUserParams) (sql.Result, error)
+	Update(ctx context.Context, db DBTX, arg UpdateParams) (sql.Result, error)
 }
 
 var _ Querier = (*Queries)(nil)

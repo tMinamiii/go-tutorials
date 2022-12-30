@@ -6,15 +6,15 @@ CREATE TABLE contents (
   `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
--- name: SelectContentByID :one
+-- name: SelectByID :one
 SELECT * FROM contents WHERE id = ?;
 
--- name: InsertContent :execresult
+-- name: Insert :execresult
 INSERT INTO contents (id, user_id, content)
     VALUES(?, ?, ?);
 
--- name: UpdateContent :execresult
+-- name: Update :execresult
 UPDATE contents SET content = ? WHERE id = ?;
 
--- name: DeleteContent :exec
+-- name: Delete :exec
 DELETE FROM contents WHERE id = ?;

@@ -3,35 +3,35 @@
 //   sqlc v1.16.0
 // source: users.sql
 
-package sqlc_multi_content
+package model_user
 
 import (
 	"context"
 	"database/sql"
 )
 
-const deleteUser = `-- name: DeleteUser :exec
+const delete = `-- name: Delete :exec
 DELETE FROM users WHERE id = ?
 `
 
-func (q *Queries) DeleteUser(ctx context.Context, db DBTX, id int64) error {
-	_, err := db.ExecContext(ctx, deleteUser, id)
+func (q *Queries) Delete(ctx context.Context, db DBTX, id int64) error {
+	_, err := db.ExecContext(ctx, delete, id)
 	return err
 }
 
-const insertUser = `-- name: InsertUser :execresult
+const insert = `-- name: Insert :execresult
 INSERT INTO users (` + "`" + `id` + "`" + `, ` + "`" + `name` + "`" + `, ` + "`" + `nickname` + "`" + `)
     VALUES(?, ?, ?)
 `
 
-type InsertUserParams struct {
+type InsertParams struct {
 	ID       int64          `db:"id"`
 	Name     string         `db:"name"`
 	Nickname sql.NullString `db:"nickname"`
 }
 
-func (q *Queries) InsertUser(ctx context.Context, db DBTX, arg InsertUserParams) (sql.Result, error) {
-	return db.ExecContext(ctx, insertUser, arg.ID, arg.Name, arg.Nickname)
+func (q *Queries) Insert(ctx context.Context, db DBTX, arg InsertParams) (sql.Result, error) {
+	return db.ExecContext(ctx, insert, arg.ID, arg.Name, arg.Nickname)
 }
 
 const selectByID = `-- name: SelectByID :one
@@ -51,16 +51,16 @@ func (q *Queries) SelectByID(ctx context.Context, db DBTX, id int64) (User, erro
 	return i, err
 }
 
-const updateUser = `-- name: UpdateUser :execresult
+const update = `-- name: Update :execresult
 UPDATE users SET ` + "`" + `name` + "`" + ` = ?, ` + "`" + `nickname` + "`" + ` = ?  WHERE id = ?
 `
 
-type UpdateUserParams struct {
+type UpdateParams struct {
 	Name     string         `db:"name"`
 	Nickname sql.NullString `db:"nickname"`
 	ID       int64          `db:"id"`
 }
 
-func (q *Queries) UpdateUser(ctx context.Context, db DBTX, arg UpdateUserParams) (sql.Result, error) {
-	return db.ExecContext(ctx, updateUser, arg.Name, arg.Nickname, arg.ID)
+func (q *Queries) Update(ctx context.Context, db DBTX, arg UpdateParams) (sql.Result, error) {
+	return db.ExecContext(ctx, update, arg.Name, arg.Nickname, arg.ID)
 }

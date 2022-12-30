@@ -2,7 +2,7 @@
 // versions:
 //   sqlc v1.16.0
 
-package sqlc_multi_content
+package model_content
 
 import (
 	"time"

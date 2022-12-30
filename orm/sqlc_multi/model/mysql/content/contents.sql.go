@@ -3,43 +3,43 @@
 //   sqlc v1.16.0
 // source: contents.sql
 
-package sqlc_multi_content
+package model_content
 
 import (
 	"context"
 	"database/sql"
 )
 
-const deleteContent = `-- name: DeleteContent :exec
+const delete = `-- name: Delete :exec
 DELETE FROM contents WHERE id = ?
 `
 
-func (q *Queries) DeleteContent(ctx context.Context, db DBTX, id int64) error {
-	_, err := db.ExecContext(ctx, deleteContent, id)
+func (q *Queries) Delete(ctx context.Context, db DBTX, id int64) error {
+	_, err := db.ExecContext(ctx, delete, id)
 	return err
 }
 
-const insertContent = `-- name: InsertContent :execresult
+const insert = `-- name: Insert :execresult
 INSERT INTO contents (id, user_id, content)
     VALUES(?, ?, ?)
 `
 
-type InsertContentParams struct {
+type InsertParams struct {
 	ID      int64  `db:"id"`
 	UserID  int64  `db:"user_id"`
 	Content string `db:"content"`
 }
 
-func (q *Queries) InsertContent(ctx context.Context, db DBTX, arg InsertContentParams) (sql.Result, error) {
-	return db.ExecContext(ctx, insertContent, arg.ID, arg.UserID, arg.Content)
+func (q *Queries) Insert(ctx context.Context, db DBTX, arg InsertParams) (sql.Result, error) {
+	return db.ExecContext(ctx, insert, arg.ID, arg.UserID, arg.Content)
 }
 
-const selectContentByID = `-- name: SelectContentByID :one
+const selectByID = `-- name: SelectByID :one
 SELECT id, user_id, content, created_at, updated_at FROM contents WHERE id = ?
 `
 
-func (q *Queries) SelectContentByID(ctx context.Context, db DBTX, id int64) (Content, error) {
-	row := db.QueryRowContext(ctx, selectContentByID, id)
+func (q *Queries) SelectByID(ctx context.Context, db DBTX, id int64) (Content, error) {
+	row := db.QueryRowContext(ctx, selectByID, id)
 	var i Content
 	err := row.Scan(
 		&i.ID,
@@ -51,15 +51,15 @@ func (q *Queries) SelectContentByID(ctx context.Context, db DBTX, id int64) (Con
 	return i, err
 }
 
-const updateContent = `-- name: UpdateContent :execresult
+const update = `-- name: Update :execresult
 UPDATE contents SET content = ? WHERE id = ?
 `
 
-type UpdateContentParams struct {
+type UpdateParams struct {
 	Content string `db:"content"`
 	ID      int64  `db:"id"`
 }
 
-func (q *Queries) UpdateContent(ctx context.Context, db DBTX, arg UpdateContentParams) (sql.Result, error) {
-	return db.ExecContext(ctx, updateContent, arg.Content, arg.ID)
+func (q *Queries) Update(ctx context.Context, db DBTX, arg UpdateParams) (sql.Result, error) {
+	return db.ExecContext(ctx, update, arg.Content, arg.ID)
 }

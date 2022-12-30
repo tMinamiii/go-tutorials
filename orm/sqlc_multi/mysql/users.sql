@@ -9,12 +9,12 @@ CREATE TABLE users (
 -- name: SelectByID :one
 SELECT * FROM users WHERE id = ?;
 
--- name: InsertUser :execresult
+-- name: Insert :execresult
 INSERT INTO users (`id`, `name`, `nickname`)
     VALUES(?, ?, ?);
 
--- name: UpdateUser :execresult
+-- name: Update :execresult
 UPDATE users SET `name` = ?, `nickname` = ?  WHERE id = ?;
 
--- name: DeleteUser :exec
+-- name: Delete :exec
 DELETE FROM users WHERE id = ?;
