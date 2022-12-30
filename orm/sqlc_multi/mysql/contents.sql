@@ -9,6 +9,9 @@ CREATE TABLE contents (
 -- name: SelectByID :one
 SELECT * FROM contents WHERE id = ?;
 
+-- name: SelectByUserID :many
+SELECT * FROM contents WHERE user_id = ?;
+
 -- name: Insert :execresult
 INSERT INTO contents (id, user_id, content)
     VALUES(?, ?, ?);

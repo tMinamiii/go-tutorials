@@ -51,6 +51,39 @@ func (q *Queries) SelectByID(ctx context.Context, db DBTX, id int64) (Content, e
 	return i, err
 }
 
+const selectByUserID = `-- name: SelectByUserID :many
+SELECT id, user_id, content, created_at, updated_at FROM contents WHERE user_id = ?
+`
+
+func (q *Queries) SelectByUserID(ctx context.Context, db DBTX, userID int64) ([]Content, error) {
+	rows, err := db.QueryContext(ctx, selectByUserID, userID)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	items := []Content{}
+	for rows.Next() {
+		var i Content
+		if err := rows.Scan(
+			&i.ID,
+			&i.UserID,
+			&i.Content,
+			&i.CreatedAt,
+			&i.UpdatedAt,
+		); err != nil {
+			return nil, err
+		}
+		items = append(items, i)
+	}
+	if err := rows.Close(); err != nil {
+		return nil, err
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
+}
+
 const update = `-- name: Update :execresult
 UPDATE contents SET content = ? WHERE id = ?
 `

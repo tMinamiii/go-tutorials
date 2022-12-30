@@ -13,6 +13,7 @@ type Querier interface {
 	Delete(ctx context.Context, db DBTX, id int64) error
 	Insert(ctx context.Context, db DBTX, arg InsertParams) (sql.Result, error)
 	SelectByID(ctx context.Context, db DBTX, id int64) (Content, error)
+	SelectByUserID(ctx context.Context, db DBTX, userID int64) ([]Content, error)
 	Update(ctx context.Context, db DBTX, arg UpdateParams) (sql.Result, error)
 }
 
