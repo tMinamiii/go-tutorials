@@ -13,7 +13,8 @@ CREATE TABLE IF NOT EXISTS users (
   `name` VARCHAR(255) NOT NULL COMMENT '名前',
   `nickname` VARCHAR(255) DEFAULT NULL COMMENT 'ニックネーム',
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  Index `index_id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
@@ -23,6 +24,8 @@ CREATE TABLE IF NOT EXISTS contents (
   `content` VARCHAR(255) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  Index `index_id` (`id`)
+  Index `index_user_id` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 USE webapp_test
