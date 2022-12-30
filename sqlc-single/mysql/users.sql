@@ -4,7 +4,7 @@ CREATE TABLE users (
   `nickname` VARCHAR(255) DEFAULT NULL COMMENT 'ニックネーム',
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- name: SelectByID :one
 SELECT * FROM users WHERE id = ?;

@@ -8,8 +8,8 @@ import (
 	"github.com/uptrace/bun/dialect/mysqldialect"
 )
 
-func Init() *bun.DB {
-	sqldb, err := sql.Open("mysql", "root@localhost:13306")
+func GetDB() *bun.DB {
+	sqldb, err := sql.Open("mysql", "apiuser:WebappLocal@localhost:13306")
 	if err != nil {
 		panic(err)
 	}

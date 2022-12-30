@@ -4,7 +4,7 @@ CREATE TABLE contents (
   `content` VARCHAR(255) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- name: SelectContentByID :one
 SELECT * FROM contents WHERE id = ?;
