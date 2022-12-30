@@ -10,6 +10,13 @@ https://github.com/google/wire
 go install github.com/google/wire/cmd/wire@latest
 ```
 
+#### docs
+
+- https://github.com/google/wire/blob/main/_tutorial/README.md
+- https://github.com/google/wire/blob/main/docs/guide.md
+- https://github.com/google/wire/blob/main/docs/best-practices.md
+- https://github.com/google/wire/blob/main/docs/faq.md
+
 ## ORMs
 
 ### Bun
