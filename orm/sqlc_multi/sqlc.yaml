@@ -8,8 +8,8 @@ sql:
   engine: mysql
   gen:
     go:
-      package: muser
-      out: model/muser
+      package: m_user
+      out: model/m_user
       emit_db_tags: true
       emit_interface: true
       emit_empty_slices: true
@@ -22,8 +22,8 @@ sql:
   engine: mysql
   gen:
     go:
-      package: mcontent
-      out: model/mcontent
+      package: m_content
+      out: model/m_content
       emit_db_tags: true
       emit_interface: true
       emit_empty_slices: true

@@ -3,7 +3,7 @@
 //   sqlc v1.16.0
 // source: contents.sql
 
-package mcontent
+package m_content
 
 import (
 	"context"
