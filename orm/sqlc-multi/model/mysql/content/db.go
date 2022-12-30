@@ -2,7 +2,7 @@
 // versions:
 //   sqlc v1.16.0
 
-package mysql_content
+package sqlc_multi_content
 
 import (
 	"context"

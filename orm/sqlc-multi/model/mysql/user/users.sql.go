@@ -3,7 +3,7 @@
 //   sqlc v1.16.0
 // source: users.sql
 
-package mysql_user
+package sqlc_multi_content
 
 import (
 	"context"

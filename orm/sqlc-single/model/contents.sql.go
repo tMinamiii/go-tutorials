@@ -3,7 +3,7 @@
 //   sqlc v1.16.0
 // source: contents.sql
 
-package model
+package sqlc_single_model
 
 import (
 	"context"

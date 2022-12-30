@@ -10,7 +10,7 @@ sql:
   engine: mysql
   gen:
     go:
-      package: model
+      package: sqlc_single_model
       out: model
       emit_db_tags: true
       emit_interface: true

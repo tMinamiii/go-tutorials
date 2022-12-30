@@ -2,7 +2,7 @@
 // versions:
 //   sqlc v1.16.0
 
-package model
+package sqlc_single_model
 
 import (
 	"database/sql"
