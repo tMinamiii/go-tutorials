@@ -2,37 +2,13 @@ package sqlc_multi
 
 import (
 	"database/sql"
-	"fmt"
 	"log"
-	"os"
 	"sync"
 	"time"
+	"tutorials/conf"
 
 	_ "github.com/go-sql-driver/mysql"
 )
-
-type databaseConfig struct {
-	database string
-	user     string
-	passwd   string
-	address  string
-}
-
-var webappConfig = &databaseConfig{
-	database: databaseWithEnv("webapp"),
-	user:     "apiuser",
-	passwd:   "WebappLocal",
-	address:  "localhost:13306",
-}
-
-func (d *databaseConfig) source() string {
-	return fmt.Sprintf("%s:%s@tcp(%s)/%s", d.user, d.passwd, d.address, d.database)
-}
-
-func databaseWithEnv(database string) string {
-	goenv := os.Getenv("GO_ENV")
-	return fmt.Sprintf("%s_%s", database, goenv)
-}
 
 var (
 	lock sync.Mutex
@@ -46,7 +22,8 @@ func GetDB(database string) *sql.DB {
 		return sess
 	}
 
-	sess, err := sql.Open("mysql", webappConfig.source())
+	config := conf.NewDBConfig("webapp")
+	sess, err := sql.Open("mysql", config.Source())
 	if err != nil {
 		panic(err)
 	}

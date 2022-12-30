@@ -3,6 +3,7 @@ package bun_mysql
 import (
 	"database/sql"
 	"sync"
+	"tutorials/conf"
 
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/uptrace/bun"
@@ -21,7 +22,8 @@ func GetDB() *bun.DB {
 		return db
 	}
 
-	sqldb, err := sql.Open("mysql", "apiuser:WebappLocal@localhost:13306")
+	config := conf.NewDBConfig("webapp")
+	sqldb, err := sql.Open("mysql", config.Source())
 	if err != nil {
 		panic(err)
 	}
