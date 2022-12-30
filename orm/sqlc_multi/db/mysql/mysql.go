@@ -1,13 +1,12 @@
-package sqlc_multi
+package mysql
 
 import (
 	"database/sql"
-	"log"
 	"sync"
 	"time"
-	"tutorials/conf"
 
 	_ "github.com/go-sql-driver/mysql"
+	"github.com/tMinamiii/tutorials/conf"
 )
 
 var (
@@ -36,8 +35,5 @@ func GetDB(database string) *sql.DB {
 
 // RollbackUnlessCommit トランザクションがcommitされていなかった場合 rollback する
 func RollbackUnlessCommit(tx *sql.Tx) {
-	err := tx.Rollback()
-	if err != nil {
-		log.Fatalf("failed to MySQL Rollback: %s", err.Error())
-	}
+	_ = tx.Rollback()
 }

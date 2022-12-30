@@ -27,32 +27,13 @@ https://bun.uptrace.dev/
 go get github.com/uptrace/bun@latest
 ```
 
-### ent.
+### ent
 
 https://entgo.io/ja/
 
 ```sh
 go get -d entgo.io/ent/cmd/ent
 go install entgo.io/ent/cmd/ent@latest
-```
-
-### GORM
-
-https://gorm.io/
-
-```sh
-go get -u gorm.io/gorm
-```
-
-### SQLBoiler
-
-https://github.com/volatiletech/sqlboiler
-
-```sh
-go get github.com/volatiletech/sqlboiler/v4
-go get github.com/volatiletech/null/v8
-go install github.com/volatiletech/sqlboiler/v4@latest
-go install github.com/volatiletech/sqlboiler/v4/drivers/sqlboiler-psql@latest
 ```
 
 ### sqlc

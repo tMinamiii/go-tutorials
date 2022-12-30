@@ -5,9 +5,9 @@ import (
 	"log"
 	"sync"
 	"time"
-	"tutorials/conf"
 
 	_ "github.com/go-sql-driver/mysql"
+	"github.com/tMinamiii/tutorials/conf"
 )
 
 var (

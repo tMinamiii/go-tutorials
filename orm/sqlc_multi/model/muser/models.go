@@ -2,7 +2,7 @@
 // versions:
 //   sqlc v1.16.0
 
-package model_user
+package muser
 
 import (
 	"database/sql"

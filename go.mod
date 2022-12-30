@@ -1,4 +1,4 @@
-module tutorials
+module github.com/tMinamiii/tutorials
 
 go 1.19
 

@@ -3,9 +3,9 @@ package bun_mysql
 import (
 	"database/sql"
 	"sync"
-	"tutorials/conf"
 
 	_ "github.com/go-sql-driver/mysql"
+	"github.com/tMinamiii/tutorials/conf"
 	"github.com/uptrace/bun"
 	"github.com/uptrace/bun/dialect/mysqldialect"
 )
