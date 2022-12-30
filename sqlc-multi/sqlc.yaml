@@ -1,0 +1,30 @@
+version: 2
+
+sql:
+- schema:
+    - mysql/users.sql
+  queries:
+    - mysql/users.sql
+  engine: mysql
+  gen:
+    go:
+      package: mysql_user
+      out: model/mysql/user
+      emit_db_tags: true
+      emit_interface: true
+      emit_empty_slices: true
+      emit_methods_with_db_argument: true
+
+- schema:
+    - mysql/contents.sql
+  queries:
+    - mysql/contents.sql
+  engine: mysql
+  gen:
+    go:
+      package: mysql_content
+      out: model/mysql/content
+      emit_db_tags: true
+      emit_interface: true
+      emit_empty_slices: true
+      emit_methods_with_db_argument: true
