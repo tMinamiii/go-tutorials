@@ -39,7 +39,7 @@ var (
 	sess *sql.DB
 )
 
-func GetSession(database string) *sql.DB {
+func GetDB(database string) *sql.DB {
 	lock.Lock()
 	defer lock.Unlock()
 	if sess != nil {
